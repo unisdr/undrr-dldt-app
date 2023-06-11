@@ -1,0 +1,112 @@
+.data-component {
+  background: #f9f9f9;
+  min-height: 300px;
+  border: 1px solid #ced3d8;
+  margin-bottom: 20px;
+  border-radius: 5px;
+}
+.ant-tabs-tab-btn {
+  font-size: 16px;
+  color: #333;
+  font-weight: 500;
+}
+.ant-tabs .ant-tabs-tab.ant-tabs-tab-active .ant-tabs-tab-btn {
+  color: #004f91;
+}
+.ant-tabs .ant-tabs-ink-bar {
+  background: #004f91;
+}
+.page-hero {
+  background: #f7f2f2;
+  padding: 0px 20px 0 20px;
+}
+.page-hero .content {
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.page-hero .summary-cards .card {
+  border-right: 1px solid #f2f2f9;
+  margin-bottom: 20px;
+}
+.card {
+  background: #fff;
+}
+.card h2 {
+  margin-top: 0px;
+}
+.card .content {
+  padding: 15px;
+}
+.card-chart {
+  background: #fff;
+  margin-bottom: 20px;
+}
+.big-number {
+  font-size: 30px;
+  color: #111;
+  font-family: "Roboto", sans-serif;
+}
+.icon {
+  font-size: 20px;
+  color: #004f91;
+}
+.chart-controls {
+  margin: 0 0 20px 0;
+  padding: 10px;
+  background: #f9f9f9;
+}
+.chart-controls label {
+  font-size: 11px;
+  text-transform: uppercase;
+  display: block;
+  margin: 10px 0 3px 0;
+  padding: 0;
+}
+.page-analysis .dashboard .ant-menu {
+  margin-bottom: 0px !important;
+  padding-top: 10px;
+}
+.dashboard-controls {
+  position: relative;
+}
+.add-chart {
+  border: 1px solid #004f91 !important;
+  color: #004f91;
+  display: block;
+
+  margin: 0 auto 40px auto;
+}
+.delete-chart {
+  position: absolute;
+  top: 30px;
+  right: 30px;
+}
+.show-settings {
+  position: absolute;
+  right: 50px;
+  top: 30px;
+}
+.dashboard-settings-control {
+  position: absolute;
+  right: 40px;
+  top: 40px;
+}
+.dashboard-delete-control {
+  position: absolute;
+  right: 20px;
+  top: 40px;
+}
+.dashboard-settings {
+  margin-top: 20px;
+  background: #f9f9f9;
+  padding: 10px;
+}
+.dashboard-controls label,
+.dashboard-settings label {
+  font-size: 11px;
+  text-transform: uppercase;
+}
+.page-analysis .dashboard .ant-menu {
+  margin-bottom: 0px;
+}

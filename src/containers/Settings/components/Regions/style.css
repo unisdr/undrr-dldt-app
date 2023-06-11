@@ -1,0 +1,19 @@
+table a,
+table a:hover {
+  color: #004f91;
+}
+table td {
+  white-space: nowrap;
+}
+.table-wrapper {
+  max-width: 100%;
+  overflow-y: scroll;
+}
+.page-controls {
+  min-height: 40px;
+  position: relative;
+}
+.add-record {
+  position: absolute;
+  right: 0;
+}

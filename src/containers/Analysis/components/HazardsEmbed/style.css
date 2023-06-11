@@ -1,0 +1,13 @@
+.page-embed {
+  background: #f7f2f2;
+  min-height: 500px;
+  margin: 0 auto;
+}
+.iframe-wrapper {
+  max-width: 1400px;
+  margin: 0 auto;
+}
+.iframe-wrapper .content {
+  padding: 20px;
+  background: #fff;
+}

@@ -1,0 +1,12 @@
+.item-content {
+  background: #f9f9f9;
+  padding: 10px;
+  border: 1px solid #ced3d8;
+  margin-bottom: 20px;
+  border-radius: 3px;
+  min-height: 100px;
+}
+.item-content h2 {
+  margin: 0 0 10px 0;
+  font-size: 16px;
+}

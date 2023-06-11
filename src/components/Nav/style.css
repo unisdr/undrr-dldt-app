@@ -1,0 +1,112 @@
+.nav {
+  height: 80px;
+  width: 100%;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1);
+  position: relative;
+  z-index: 1000;
+}
+.nav .ant-menu {
+  background: none !important;
+  border-bottom: none !important;
+  position: absolute;
+  right: 40px;
+  width: 420px;
+}
+
+@media (max-width: 800px) {
+  .nav .ant-menu {
+    width: 100px;
+  }
+}
+.nav .ant-menu-overflow-item {
+  font-family: "Roboto Condensed", sans-serif;
+  line-height: 5;
+  text-transform: uppercase;
+  font-size: 16px;
+  font-weight: 700;
+}
+.nav .ant-menu-overflow-item.ant-menu-item-active {
+  color: #333 !important;
+}
+.nav .ant-menu-item-active::after {
+  border-bottom-color: #004f91 !important;
+}
+.nav .ant-menu-item-selected::after {
+  border-bottom-color: #004f91 !important;
+}
+.nav .ant-menu-light.ant-menu-horizontal > .ant-menu-item-selected {
+  color: #004f91;
+}
+.nav .ant-menu {
+  margin-left: -20px;
+}
+.ant-menu-title-content a {
+  display: block !important;
+}
+.nav .content {
+  padding: 0 40px;
+  max-width: 1400px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.nav .brand {
+  width: 60px;
+  height: 60px;
+  display: block;
+  position: absolute;
+  left: 30px;
+  top: 0;
+  padding: 10px;
+  background: #f7f2f2;
+  text-indent: -9999px;
+}
+.nav .brand .icon {
+  width: 60px;
+  height: 60px;
+  display: block;
+  text-indent: -9999px;
+  background: url(./logo-circle.png) no-repeat left center;
+  background-size: contain;
+}
+.nav .instance-flag {
+  position: absolute;
+  left: 130px;
+  top: 30px;
+  width: 30px;
+  height: 20px;
+  color: #333;
+  display: block;
+  text-indent: -9999px;
+  background: url("./flag.png") no-repeat center center;
+  background-size: contain;
+}
+.nav .instance-name {
+  position: absolute;
+  left: 170px;
+  top: 28px;
+  text-decoration: none;
+  font-weight: 700;
+  color: #333;
+  font-size: 20px;
+}
+
+.settings-link {
+  position: absolute;
+  right: 20px;
+  top: 28px;
+  color: #777;
+  text-decoration: none;
+}
+.nav .anticon-ellipsis {
+  font-size: 30px !important;
+  color: #004f91;
+}
+
+@media (max-width: 600px) {
+  .nav .ant-menu-submenu {
+    position: absolute;
+    right: 20px;
+    display: block;
+  }
+}

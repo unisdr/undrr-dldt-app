@@ -1,0 +1,9 @@
+.hde-item {
+  position: relative;
+}
+.hde-item .delete-asset-item {
+  top: 5px;
+}
+.hde-item .ant-form-item {
+  margin-bottom: 5px;
+}

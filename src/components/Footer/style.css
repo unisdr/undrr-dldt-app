@@ -1,0 +1,9 @@
+.global-footer {
+  background: rgba(0, 79, 145, 0.8);
+  padding: 0 30px 100px 30px;
+}
+.global-footer img {
+  max-width: 1200px;
+  margin: 0 auto 0 auto;
+  display: block;
+}

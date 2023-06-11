@@ -1,0 +1,38 @@
+.global-header {
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.3);
+  position: relative;
+  z-index: 10000;
+}
+.menu {
+  background: #333 url(./toolbar-background.png) no-repeat center center;
+}
+.menu .content {
+  max-width: 1400px;
+  padding: 0 40px;
+  margin: 0 auto;
+}
+.undrr-logo {
+  width: 94px;
+  padding: 8px 0 4px 0;
+  margin-left: -5px;
+}
+.color-bar {
+  width: 25%;
+  height: 7px;
+  float: left;
+  display: block;
+  margin: 0;
+  padding: 0;
+}
+.color-bar-red {
+  background: #c1092d;
+}
+.color-bar-purple {
+  background: #962987;
+}
+.color-bar-green {
+  background: #00afae;
+}
+.color-bar-orange {
+  background: #eb752a;
+}

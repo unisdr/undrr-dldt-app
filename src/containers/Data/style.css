@@ -1,0 +1,14 @@
+table td {
+  white-space: nowrap;
+}
+.table-wrapper {
+  max-width: 100%;
+  overflow-y: scroll;
+}
+.page-controls {
+  position: relative;
+}
+.add-record {
+  position: absolute;
+  right: 0;
+}

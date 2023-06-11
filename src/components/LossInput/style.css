@@ -1,0 +1,18 @@
+.losses-input {
+  background: #f9f9f9;
+  padding: 15px;
+  margin-top: 20px;
+}
+.asset-input {
+  margin-bottom: 10px;
+}
+.asset-item {
+  padding-top: 20px;
+  position: relative;
+}
+.asset-input p {
+  font-size: 16px;
+}
+.effect-input-footer {
+  margin-top: 20px;
+}

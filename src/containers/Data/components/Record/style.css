@@ -1,0 +1,29 @@
+.record-form {
+  border-radius: 5px;
+  margin-bottom: 10px;
+  margin-top: 20px;
+}
+.record-form label {
+  text-transform: capitalize;
+}
+.record-form-footer {
+  margin-top: 40px;
+}
+/*
+label {
+  font-family: "Roboto Condensed", sans-serif;
+  text-transform: uppercase !important;
+  color: #004F91 !important;
+}
+.ant-input-number,
+.ant-select-selector,
+.ant-picker {
+  border-color: #004F91 !important;
+}
+.record-form h2 {
+  font-size: 28px;
+}
+.record-form h3 {
+  font-size: 24px;
+}
+*/

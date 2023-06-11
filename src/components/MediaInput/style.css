@@ -1,0 +1,12 @@
+.field-media-row {
+  border: 1px solid #ddd;
+  padding: 10px;
+  position: relative;
+}
+.field-media-row-delete {
+  position: absolute;
+  right: 10px;
+  z-index: 100;
+  display: block;
+  color: #555;
+}

@@ -1,7 +1,7 @@
-# Pumba App
+# DLDT App
 
 This is the Pumba App.
 
-Pumba is a prototype Damages & Losses Accounting System (D&LAS) built for UNDRR.
+This is a prototype Disater Loss and Damage Tracking (DLDT) system built for UNDRR.
 
-Each Pumba instance consists of a frontend React.js application (the Pumba app) and a backend (the Pumba API) powered by a Directus instance.
+Each DLDT instance consists of a frontend React.js application and a backend API, powered by a Directus.

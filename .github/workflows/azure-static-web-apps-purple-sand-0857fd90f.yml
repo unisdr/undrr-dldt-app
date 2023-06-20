@@ -17,9 +17,6 @@ jobs:
       - uses: actions/checkout@v3
         with:
           submodules: true
-      - name: Load Environment Variables
-        run: |
-          echo "$(cat .env.production)" >> $GITHUB_ENV
       - name: Build And Deploy
         id: builddeploy
         uses: Azure/static-web-apps-deploy@v1

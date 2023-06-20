@@ -25,7 +25,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
+    "build": "react-scripts build --no-warnings",
     "deploy": "aws s3 sync build/ s3://pumba-app --delete --profile akuko",
     "clear-cache": "aws cloudfront create-invalidation --distribution-id E8EHA067LPBW5 --paths '/*' --profile akuko",
     "test": "react-scripts test",

@@ -33,6 +33,8 @@ jobs:
           api_location: "" # Api source code path - optional
           output_location: "build" # Built app content directory - optional
           ###### End of Repository/Build Configurations ######
+    env:
+      CI: false # Set to false to ignore treating warnings as errors
 
 
   close_pull_request_job:

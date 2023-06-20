@@ -1,67 +1,132 @@
 import React, { useState, useEffect } from "react";
 import "./style.css";
 import { Nav } from "../../components/Nav";
-import { Button, message, Row, Col, Tag, Select, Table, Menu } from "antd";
+import { Button, message, Row, Col, Tag, Tooltip, Select, Tabs, Table, Menu } from "antd";
 import { Link } from "react-router-dom";
+import { UserOutlined } from "@ant-design/icons";
 import moment from "moment";
 import axios from "axios";
+import damageChart from './damage-chart.png';
 
 const Front = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
 
+  const statusColor = {
+    draft: '#F4E496',
+    published: '#0A696A',
+  }
+  
+  const StatusTable = () => {
+  return (
+    <div className="table-wrapper">
+  <Table
+  dataSource={[
+    { edit: 'edit', effects: 2, uuid: '523ad310-dd02-443a-b69f-81e55d39b662', user: 'elisapetak@disasterland.gov', status: 'draft' , updated: '06-13-23 08:52'},
+    { edit: 'edit', effects: 1, uuid: '523ad310-dd02-443a-b69f-81e55d39b662', user: 'elisapetak@disasterland.gov', status: 'draft' , updated: '06-13-23 11:22'},
+    { edit: 'edit', effects: 3, uuid: '523ad310-dd02-443a-b69f-81e55d39b662', user: 'elisapetak@disasterland.gov', status: 'draft' , updated: '06-13-23 08:52'},
+    { edit: 'edit', effects: 4, uuid: '523ad310-dd02-443a-b69f-81e55d39b662', user: 'elisapetak@disasterland.gov', status: 'draft' , updated: '06-13-23 11:22'},
+    { edit: 'edit', effects: 2, uuid: '523ad310-dd02-443a-b69f-81e55d39b662', user: 'elisapetak@disasterland.gov', status: 'draft' , updated: '06-13-23 08:52'},
+    { edit: 'edit', effects: 2, uuid: '523ad310-dd02-443a-b69f-81e55d39b662', user: 'elisapetak@disasterland.gov', status: 'draft' , updated: '06-13-23 11:22'},
+  ]}
+  columns={[{
+    key: 'status',
+    dataIndex: 'status',
+    title: 'Status',
+    render: (value) => {
+        return (
+        <Tooltip title={ value }>
+          {} <div 
+            style={{ background: statusColor[value] }} 
+            className="status-circle">
+            { value }
+          </div>
+        </Tooltip>
+        )
+    }
+  },
+  {
+    dataIndex: "region",
+    title: "Region",
+    key: "region",
+    render: () => (<Tag color="green">DL32</Tag>)
+  },
+  {
+    key: 'updated',
+    dataIndex: 'updated',
+    title: 'Updated'
+  },
+  { key: 'user',
+    dataIndex: 'user',
+    title: 'Last edit',
+    render: (value) => (<><UserOutlined /> {value} </>)
+  },
+  {
+    key: 'sector',
+    dataIndex: 'sector',
+    title: 'Sector',
+    render: (value) => ( <Tag color="blue">Water & Sanitation</Tag>)
+  },
+  {
+    key: 'event',
+    dataIndex: 'event',
+    title: 'Event',
+    render: (value) => ( <Tag color="orange">LS-2015-11-07-DL41</Tag>)
+  },
+  {
+    key: 'effects',
+    dataIndex: 'effects',
+    title: 'Effects',
+  },
+  {
+    key: 'edit',
+    title: 'Edit',
+    dataIndex: 'uuid',
+    render: (value) => (<Link to={ `/record/${value}` }>Edit</Link>)
+  }]}
+/>
+</div>
+)}
+
   return (
     <div className="front-page">
-      <div className="front-section front-section-1">
+      <div className="front-section">
         <div className="content">
-          <div className="box">
-            <h2>Welcome to the future of disaster loss and damage tracking</h2>
-            <p>We are building a new DLDT tracking system</p>
-            <Link to="/data/records">Explore the DLDT prototype</Link>
-          </div>
+        
+         <div className="welcome-msg">
+          <p>Welcome to the Disasterland Disaster Losses and Damage Tracking System.
+          You can create a <Link to="/">new record</Link>, explore data in the <Link to="/">analysis</Link> section, configure your instance <Link to="/">settings</Link>, and <Link to="/">import</Link> or <Link to="/">export</Link> data.</p>
         </div>
-      </div>
-      <div className="front-section front-section-2">
+        
+    
+        <h2>Latest updates</h2>
         <div className="content">
-          <Row gutter={20}>
-            <Col sm={2} xs={24}></Col>
-            <Col sm={14} xs={24}>
-              <p>
-                The new Disaster Loss Damage Tracking (DLDT) application is a
-                robust system designed to capture, analyze, and visualize data
-                related to disasters and their impacts. It serves as a
-                comprehensive platform for tracking and managing information
-                about losses, damages, and effects caused by various hazards.
-                DLDT enables users to efficiently record and catalog these
-                effects, associate them with specific events and hazards, and
-                generate meaningful insights to support disaster risk management
-                and response efforts. With its user-friendly interface,
-                customizable analytics, and integration capabilities, DLDT
-                empowers organizations and countries to effectively assess,
-                monitor, and address the consequences of disasters.
-              </p>
-              <h2>About this prototype</h2>
-              <p>
-                The DLDT prototype is an early-stage version of the Disaster
-                Loss Damage Tracking system, designed to demonstrate the
-                envisioned functionality and features of the final application.
-                Although the prototype may not encompass the full range of
-                intended capabilities, it provides a tangible representation of
-                key aspects such as data entry, visualization, and basic
-                analysis. The prototype serves as a valuable tool for
-                stakeholders to visualize the user interface, interact with
-                simulated functionality, and provide feedback on the overall
-                design and user experience. By using the prototype, stakeholders
-                can actively participate in the development process,
-                contributing insights and suggestions to shape the future
-                direction of DLDT. The prototype acts as a foundation for
-                further refinement and development, helping to ensure that the
-                final application aligns with the needs and requirements of
-                users and stakeholders.
-              </p>
-            </Col>
-          </Row>
+          <Tabs 
+           tabPosition={'left'}
+           items={[
+            { label: 'Records', 
+              key: 'records',
+              children:(
+                <StatusTable />
+              )
+            },
+            { label: 'Users', 
+              key: 'users',
+              children:(<StatusTable />)
+            },
+            { label: 'Events', 
+              key: 'events',
+              children:(<StatusTable />)
+            },
+            { label: 'Alerts', 
+              key: 'alerts',
+              children:(<StatusTable />)
+            }
+
+           ]}
+          />
+          </div>
         </div>
       </div>
     </div>

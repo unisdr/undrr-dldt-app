@@ -1,0 +1,42 @@
+
+.front-section h1,
+.front-section h2 {
+  font-weight: 900;
+  font-size: 24px;
+}
+.front-section p {
+  font-size: 16px;
+  line-height: 1.6;
+}
+img {
+  max-width: 100%;
+}
+.front-page-global {
+  max-width: 1400px;
+  margin: 40px auto;
+}
+.front-page .card {
+  background: #f9f9f9;
+  margin-bottom: 30px;
+}
+.card h2 {
+  margin-top: 0px;
+}
+.card .content {
+  padding: 0px;
+}
+.card-chart {
+  background: #fff;
+  margin-bottom: 20px;
+}
+.big-number {
+  font-size: 30px;
+  color: #111;
+  font-family: "Roboto", sans-serif;
+}
+.map {
+  background: url('./map.png') no-repeat center center;
+  background-size: contain;
+  border: 1px solid #ddd;
+  height: 400px;
+}

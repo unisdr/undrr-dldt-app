@@ -122,6 +122,7 @@ const Record = () => {
       const losses = sort.filter((a) => a.type === "loss");
       const disruptions = sort.filter((a) => a.type === "disruption");
       const humanEffects = sort.filter((a) => a.type === "human_effect");
+     
       /*
       const orderdHumanEffects = [];
       humanEffects.forEach((item) => {
@@ -403,7 +404,7 @@ const Record = () => {
                 record.sector?.includes(id)
               )
                 ? ["AGR", record.sector]
-                : record.sector,
+                : [record.sector],
               region: record?.region,
               event: record?.event,
               hazard: record?.hazard,
@@ -484,7 +485,7 @@ const Record = () => {
             onFinish={(values) => {
               // submit effects and build array of ids
               setLoading(true);
-
+              console.log(values)
               const promises = [];
               if (values.assets?.length > 0) {
                 values?.assets.forEach((item) => {
@@ -500,10 +501,10 @@ const Record = () => {
                       date: values.date,
                       hazard: "FL",
                       sector:
-                        values.sector.length > 1
+                        Array.isArray(values.sector) && values.sector.length > 1
                           ? values.sector[1]
                           : values.sector[0],
-                      event: values.event,
+                      event: values.event || null,
                       type: "damage",
                       media: mediaIds,
                     })
@@ -524,7 +525,7 @@ const Record = () => {
                           ? values.sector[1]
                           : values.sector[0],
                       hazard: "FL",
-                      event: values.event,
+                      event: values.event || null,
                       type: "loss",
                     })
                   );
@@ -544,7 +545,7 @@ const Record = () => {
                           ? values.sector[1]
                           : values.sector[0],
                       hazard: values.hazard,
-                      event: values.event,
+                      event: values.event || null,
                       type: "disruption",
                     })
                   );
@@ -564,7 +565,7 @@ const Record = () => {
                           ? values.sector[1]
                           : values.sector[0],
                       hazard: values.hazard,
-                      event: values.event,
+                      event: values.event || null,
                       type: "human_effect",
                     })
                   );
@@ -588,7 +589,7 @@ const Record = () => {
                       : values.sector[0],
                   region: values.region,
                   district: values.district,
-                  event: values.event,
+                  event: values.event || null,
                   hazard: values.hazard,
                   duration: values.duration,
                   effects: effectIds,
@@ -839,9 +840,10 @@ const Record = () => {
                   >
                     <Cascader
                       showSearch
+                      placeholder={"Type to search..."}
                       options={sectors}
                       onChange={(values) => {
-                        if (values.length === 2) {
+                        if (Array.isArray(values) && values.length > 1) {
                           setSectorId(values[1]);
                         } else {
                           setSectorId(values[0]);

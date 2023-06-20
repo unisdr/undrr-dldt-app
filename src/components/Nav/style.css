@@ -10,7 +10,7 @@
   border-bottom: none !important;
   position: absolute;
   right: 40px;
-  width: 420px;
+  width: 500px;
 }
 
 @media (max-width: 800px) {
@@ -38,7 +38,7 @@
   color: #004f91;
 }
 .nav .ant-menu {
-  margin-left: -20px;
+  margin-right: -40px;
 }
 .ant-menu-title-content a {
   display: block !important;
@@ -90,17 +90,9 @@
   color: #333;
   font-size: 20px;
 }
-
-.settings-link {
-  position: absolute;
-  right: 20px;
-  top: 28px;
-  color: #777;
-  text-decoration: none;
-}
 .nav .anticon-ellipsis {
   font-size: 30px !important;
-  color: #004f91;
+  color: #222;
 }
 
 @media (max-width: 600px) {
@@ -109,4 +101,11 @@
     right: 20px;
     display: block;
   }
+}
+.nav .ant-menu-submenu-title span {
+  margin-top: 25px !important;
+  display: block;
+}
+.nav .ant-menu-submenu-selected::after {
+  border-bottom-color: #fff !important;
 }

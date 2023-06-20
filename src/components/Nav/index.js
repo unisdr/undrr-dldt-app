@@ -45,7 +45,7 @@ const Nav = () => {
             },
             {
               label: (
-                <Link to="/analysis/records">
+                <Link to="/analysis/events">
                   <EyeOutlined /> Analysis
                 </Link>
               ),
@@ -66,6 +66,14 @@ const Nav = () => {
                 </Link>
               ),
               key: "Settings",
+            },
+            {
+              label: (
+                <Link to="/">
+                  <UserOutlined /> My Account
+                </Link>
+              ),
+              key: "account",
             },
           ]}
         />

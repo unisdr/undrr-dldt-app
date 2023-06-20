@@ -4,6 +4,7 @@ import "./App.css";
 
 import { Nav } from "./components/Nav";
 import { Front } from "./containers/Front";
+import { GlobalFront } from "./containers/GlobalFront/";
 import { Data } from "./containers/Data";
 import { Record } from "./containers/Data/components/Record";
 import { Event } from "./containers/Data/components/Event";
@@ -25,10 +26,8 @@ function App() {
       path: "/",
       element: (
         <>
-          <GlobalHeader />
           <Nav />
           <Front />
-          <GlobalFooter />
         </>
       ),
     },
@@ -36,10 +35,8 @@ function App() {
       path: "/record",
       element: (
         <>
-          <GlobalHeader />
           <Nav />
           <Record />
-          <GlobalFooter />
         </>
       ),
     },
@@ -47,10 +44,8 @@ function App() {
       path: "/data/:page",
       element: (
         <>
-          <GlobalHeader />
           <Nav />
           <Data />
-          <GlobalFooter />
         </>
       ),
     },
@@ -58,10 +53,8 @@ function App() {
       path: "/event/add",
       element: (
         <>
-          <GlobalHeader />
           <Nav />
           <Event />
-          <GlobalFooter />
         </>
       ),
     },
@@ -69,10 +62,8 @@ function App() {
       path: "/indicator/add",
       element: (
         <>
-          <GlobalHeader />
           <Nav />
           <Indicator />
-          <GlobalFooter />
         </>
       ),
     },
@@ -80,10 +71,8 @@ function App() {
       path: "/event/add",
       element: (
         <>
-          <GlobalHeader />
           <Nav />
           <Event />
-          <GlobalFooter />
         </>
       ),
     },
@@ -91,10 +80,8 @@ function App() {
       path: "/record/add",
       element: (
         <>
-          <GlobalHeader />
           <Nav />
           <Record />
-          <GlobalFooter />
         </>
       ),
     },
@@ -102,10 +89,8 @@ function App() {
       path: "/record/:id",
       element: (
         <>
-          <GlobalHeader />
           <Nav />
           <Record />
-          <GlobalFooter />
         </>
       ),
     },
@@ -113,10 +98,8 @@ function App() {
       path: "/analysis",
       element: (
         <>
-          <GlobalHeader />
           <Nav />
           <Analysis />
-          <GlobalFooter />
         </>
       ),
     },
@@ -124,11 +107,9 @@ function App() {
       path: "/analysis/records",
       element: (
         <>
-          <GlobalHeader />
           <Nav />
           <AnalysisMenu />
           <RecordsEmbed />
-          <GlobalFooter />
         </>
       ),
     },
@@ -136,11 +117,9 @@ function App() {
       path: "/analysis/events",
       element: (
         <>
-          <GlobalHeader />
           <Nav />
           <AnalysisMenu />
           <EventsEmbed />
-          <GlobalFooter />
         </>
       ),
     },
@@ -148,11 +127,9 @@ function App() {
       path: "/analysis/sectors",
       element: (
         <>
-          <GlobalHeader />
           <Nav />
           <AnalysisMenu />
           <SectorsEmbed />
-          <GlobalFooter />
         </>
       ),
     },
@@ -160,11 +137,9 @@ function App() {
       path: "/analysis/hazards",
       element: (
         <>
-          <GlobalHeader />
           <Nav />
           <AnalysisMenu />
           <HazardsEmbed />
-          <GlobalFooter />
         </>
       ),
     },
@@ -172,10 +147,8 @@ function App() {
       path: "/dashboard/:id",
       element: (
         <>
-          <GlobalHeader />
           <Nav />
           <Analysis />
-          <GlobalFooter />
         </>
       ),
     },
@@ -183,10 +156,8 @@ function App() {
       path: "/about/:page",
       element: (
         <>
-          <GlobalHeader />
           <Nav />
           <About />
-          <GlobalFooter />
         </>
       ),
     },
@@ -194,9 +165,18 @@ function App() {
       path: "/settings/:page",
       element: (
         <>
-          <GlobalHeader />
           <Nav />
           <Settings />
+        </>
+      ),
+    },
+    {
+      path: "/global-front",
+      element: (
+        <>
+          <GlobalHeader />
+          <Nav />
+          <GlobalFront />
           <GlobalFooter />
         </>
       ),

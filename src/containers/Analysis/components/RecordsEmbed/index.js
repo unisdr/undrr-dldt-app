@@ -13,7 +13,7 @@ const RecordsEmbed = () => {
           <iframe
             seamless
             scrolling="no"
-            src='https://app.akuko.io/embed/787c6654-c707-4779-9bc8-70ca797a314c?components=[null,"H0NUqI4vlA","lqvUQmRBRh","Y9QqqS2oak","FpeGLy8XgM","4djN2oH0gt","v09ogwnV7e"]'
+            src='https://app.akuko.io/embed/130911da-6da8-4ed4-99ab-0aab686507ad?components=[null,"H0NUqI4vlA","lqvUQmRBRh","Y9QqqS2oak","FpeGLy8XgM","4djN2oH0gt","v09ogwnV7e"]'
             style={{ border: "none" }}
             width="100%"
             height="2400"

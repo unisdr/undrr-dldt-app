@@ -34,10 +34,6 @@ const AnalysisMenu = () => {
         const array = [];
         array.push(
           {
-            key: "Records",
-            label: <Link to={`/analysis/records`}>Records</Link>,
-          },
-          {
             key: "Events",
             label: <Link to={`/analysis/events`}>Events</Link>,
           },
@@ -48,7 +44,11 @@ const AnalysisMenu = () => {
           {
             key: "Hazards",
             label: <Link to={`/analysis/hazards`}>Hazards</Link>,
-          }
+          },
+          {
+            key: "Records",
+            label: <Link to={`/analysis/records`}>Records</Link>,
+          },
         );
         res.data.data.forEach((item) => {
           array.push({

@@ -37,7 +37,7 @@ const Data = () => {
             mode="horizontal"
             items={[
               {
-                label: <Link to="/data/records">Records</Link>,
+                label: <Link to="/data/records">Record List</Link>,
                 key: "records",
               },
               {

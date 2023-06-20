@@ -13,7 +13,7 @@ const SectorsEmbed = () => {
           <iframe
             seamless
             scrolling="no"
-            src='https://app.akuko.io/embed/99fa0d81-c535-48c2-8da8-c4bdd49e0831?components=[null,"nac9lZtqhh","5Yh0UngOuG","8jaYhZSqC6","Z5POKIDogh","jotV95PBQ7","62VURmzItJ","zMzDQvaNE5","8jp89l9ULn","NXvMImfmKx","AAqNpVChsn","g5jCl2HdNP","2Ml7by4hAI"]'
+            src='https://app.akuko.io/embed/b3cefd2d-357f-4fac-aad6-2567d0de5d55?components=[null,"nac9lZtqhh","5Yh0UngOuG","8jaYhZSqC6","Z5POKIDogh","jotV95PBQ7","62VURmzItJ","zMzDQvaNE5","8jp89l9ULn","NXvMImfmKx","AAqNpVChsn","g5jCl2HdNP","2Ml7by4hAI"]'
             style={{ border: "none" }}
             width="100%"
             height="6000"

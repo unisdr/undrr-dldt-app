@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
 import "./style.css";
 import { Nav } from "../../../../components/Nav";
-import { Button, message, Row, Col, Tag, Select, Table, Tabs } from "antd";
+import { Button, message, Row, Col, Tag, Tooltip, Select, Table, Tabs } from "antd";
 import { Link } from "react-router-dom";
 import moment from "moment";
 import axios from "axios";
+import { CircleFilled } from "@ant-design/icons";
 const { Option } = Select;
 
 const Records = () => {
@@ -13,7 +14,13 @@ const Records = () => {
   const [countries, setCountries] = useState([]);
   const [countryId, setCountryId] = useState();
   const [events, setEvents] = useState([]);
+  const [regions, setRegions] = useState([]);
   const [loading, setLoading] = useState(false);
+  
+  const statusColor = {
+    draft: '#F4E496',
+    published: '#0A696A',
+  }
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -21,6 +28,7 @@ const Records = () => {
     getSectors();
     getEvents();
     getCountries();
+    getRegions();
     setLoading(true);
   }, []);
 
@@ -75,6 +83,20 @@ const Records = () => {
       });
   };
 
+  const getRegions = () => {
+    return axios
+      .get(
+        `${process.env.REACT_APP_API_URL}/items/regions?limit=1000000&access_token=${process.env.REACT_APP_ACCESS_TOKEN}`
+      )
+      .then((res) => {
+        setRegions(res.data.data);
+      })
+      .catch((err) => {
+        console.log(err);
+        message.error("Error");
+      });
+  };
+
   const getCountries = () => {
     return axios
       .get(
@@ -113,7 +135,12 @@ const Records = () => {
 
   return (
     <>
-      <div className="page-controls">
+     
+        <div className="welcome-msg">
+          <p>Welcome to the Disasterland Disaster Losses and Damage Tracking System.
+          You can create a <Link to="/">new record</Link>, explore data in the <Link to="/">analysis</Link> section, configure your instance <Link to="/">settings</Link>, and <Link to="/">import</Link> or <Link to="/">export</Link> data.</p>
+        </div>
+        <div className="page-controls">
         <Link to="/record/add">
           <Button
             className="add-record"
@@ -133,54 +160,43 @@ const Records = () => {
                 <Table
                   columns={[
                     {
-                      dataIndex: "uuid",
-                      title: "Record",
-                      key: "id",
+                      dataIndex: "status",
+                      title: "Status",
+                      key: "status",
+                      sorter: (a, b) =>
+                        a.status.localeCompare(b.status),
                       render: (value, record) => {
-                        return <Link to={`/record/${value}`}>DL0000-00</Link>;
-                      },
+                        return (
+                        <Tooltip title={ value }>
+                          {} <div 
+                            style={{ background: statusColor[value] }} 
+                            className="status-circle">
+                            { value }
+                          </div>
+                        </Tooltip>
+                        )
+                      }
                     },
                     {
-                      dataIndex: "country",
-                      title: "Country",
-                      key: "country",
+                      dataIndex: "region",
+                      title: "Region",
+                      key: "region",
+                      filters: regions.map((item) => ({ text: item.code, value: item.code })),
+                      onFilter: (value, record) => record.region === value,
                       render: (value, record) => {
-                        return <Tag color="green">{getCountryName(value)}</Tag>;
+                        return <Tag color="green">{value}</Tag>;
                       },
                     },
                     {
                       dataIndex: "sector",
                       title: "Sector",
                       key: "sector",
-                      filters: [
-                        {
-                          text: "Agriculture",
-                          value: 1,
-                        },
-                        {
-                          text: "Health",
-                          value: 11,
-                        },
-                        {
-                          text: "Education",
-                          value: 12,
-                        },
-                        {
-                          text: "Housing",
-                          value: 10,
-                        },
-                        {
-                          text: "Culture and Heritage",
-                          value: 13,
-                        },
-                      ],
+                      filters: sectors.filter((row) => row.id !== 'AGR').map((item) => ({ text: item.name, value: item.id })),
                       onFilter: (value, record) => record.sector === value,
                       render: (value, record) => {
                         return (
                           <Tag color="blue">
-                            <Link to={`/record/${record.id}`}>
                               {getSectorName(value)}{" "}
-                            </Link>
                           </Tag>
                         );
                       },
@@ -189,15 +205,10 @@ const Records = () => {
                       dataIndex: "event",
                       title: "Event",
                       key: "event",
-                      filters: [
-                        {
-                          text: "Pakistan Floods 2022",
-                          value: 45,
-                        },
-                      ],
+                      filters: events.map((item) => ({ text: item.name, value: item.uuid })),
                       onFilter: (value, record) => record.event === value,
                       render: (value, record) => {
-                        return <Tag color="orange">{value}</Tag>;
+                        return <Tag color="orange">{ getEventName(value) }</Tag>;
                       },
                     },
                     {

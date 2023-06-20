@@ -248,7 +248,7 @@ const Chart = (props) => {
         },
         color: {
           legend: true,
-          scheme: "Blues",
+          scheme: "Oranges",
         },
         y: {
           label: "",

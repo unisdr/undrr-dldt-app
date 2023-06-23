@@ -22,7 +22,7 @@ PORT=8055
 redirects,
 # forgot-password emails, and logos that needs to be publicly available on the internet. 
 ["/"]
-PUBLIC_URL="https://pumba-api.onalabs.org"
+
 # PUBLIC_URL="http://localhost:8055"
 
 # What level of detail to log. [info]

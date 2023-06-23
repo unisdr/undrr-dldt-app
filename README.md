@@ -1,4 +1,4 @@
-# Prototype App - DLDT React
+# Prototype App - DLDT
 
 **Disclaimer: This prototype app was built over the first half of 2023 in collaboration with UNDRR (United Nations Office for Disaster Risk Reduction). It is important to note that this is not production code and should not be used as such.**
 
@@ -16,7 +16,11 @@ To get started with the prototype app, follow the steps below:
 
 1. Clone this repository.
 2. Install the required dependencies by running `npm install`.
+3. Raname `sample-env` to `.env.development` and add your access token.
+4. Create a PostgreSQL database and import `api/dldt-seed.sql`.
+4. Rename the `api/sample-env` to `.env` and add your database credentials.
 3. Build the Docker image for the Directus instance by running `docker build -t directus-api ./api`.
+4. Launch the Docker image `docker run -p 8055:8055 dldt-api`.
 3. Run the app with `npm start`.
 
 Please note that this is a prototype and may contain bugs or incomplete features. It is not intended for production use.

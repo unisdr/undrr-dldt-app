@@ -30,7 +30,7 @@ const Event = () => {
   const getEvent = () => {
     axios
       .get(
-        `https://pumba-api.onalabs.org/items/events?access_token=lviMHwju7tCCBelqMMs609fcErQ7rdYY`
+        `${window._env_.REACT_APP_API_URL}/items/events?access_token=${window._env_.REACT_APP_ACCESS_TOKEN}}`
       )
       .then((res) => {
         setEvent(res?.data?.data);

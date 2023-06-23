@@ -31,7 +31,7 @@ const HumanInputRow = (props) => {
   const getHumanEffects = () => {
     axios
       .get(
-        `https://pumba-api.onalabs.org/items/human_effects?access_token=${process.env.REACT_APP_ACCESS_TOKEN}`
+        `https://pumba-api.onalabs.org/items/human_effects?access_token=${window._env_.REACT_APP_ACCESS_TOKEN}`
       )
       .then((res) => {
         const sort = res.data.data.sort((a, b) =>
@@ -50,7 +50,7 @@ const HumanInputRow = (props) => {
     if (level && group) {
       axios
         .get(
-          `https://pumba-api.onalabs.org/items/human_effects?filter[_and][0][level][_eq]=${level}&filter[_and][1][group][_eq]=${group}&access_token=${process.env.REACT_APP_ACCESS_TOKEN}`
+          `https://pumba-api.onalabs.org/items/human_effects?filter[_and][0][level][_eq]=${level}&filter[_and][1][group][_eq]=${group}&access_token=${window._env_.REACT_APP_ACCESS_TOKEN}`
         )
         .then((res) => {
           const sort = res.data.data.sort((a, b) =>
@@ -68,7 +68,7 @@ const HumanInputRow = (props) => {
     if (level && group) {
       axios
         .get(
-          `https://pumba-api.onalabs.org/items/human_effects?filter[_and][0][level][_eq]=${level}&filter[_and][1][group][_eq]=${group}&access_token=${process.env.REACT_APP_ACCESS_TOKEN}`
+          `https://pumba-api.onalabs.org/items/human_effects?filter[_and][0][level][_eq]=${level}&filter[_and][1][group][_eq]=${group}&access_token=${window._env_.REACT_APP_ACCESS_TOKEN}`
         )
         .then((res) => {
           const sort = res.data.data.sort((a, b) =>

@@ -11,10 +11,10 @@
   font-weight: 500;
 }
 .ant-tabs .ant-tabs-tab.ant-tabs-tab-active .ant-tabs-tab-btn {
-  color: #004f91;
+  color: #027f7f;
 }
 .ant-tabs .ant-tabs-ink-bar {
-  background: #004f91;
+  background: #027f7f;
 }
 .page-hero {
   background: #f7f2f2;
@@ -49,7 +49,7 @@
 }
 .icon {
   font-size: 20px;
-  color: #004f91;
+  color: #027f7f;
 }
 .chart-controls {
   margin: 0 0 20px 0;
@@ -71,8 +71,8 @@
   position: relative;
 }
 .add-chart {
-  border: 1px solid #004f91 !important;
-  color: #004f91;
+  border: 1px solid #027f7f !important;
+  color: #027f7f;
   display: block;
 
   margin: 0 auto 40px auto;

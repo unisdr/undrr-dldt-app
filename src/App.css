@@ -42,7 +42,7 @@ h5 {
   padding-top: 10px;
 }
 .ant-btn-primary {
-  background-color: #004f91;
+  background-color: #027f7f;
   font-family: "Roboto Condensed", sans-serif;
   text-transform: uppercase;
   font-size: 14px !important;
@@ -55,13 +55,13 @@ h5 {
   margin-bottom: 20px;
 }
 .dashboard .ant-menu-item-selected a {
-  color: #004f91;
+  color: #027f7f;
 }
 .dashboard .ant-menu-light.ant-menu-horizontal .ant-menu-item:hover::after,
 .dashboard
   .ant-menu-light.ant-menu-horizontal
   > .ant-menu-item-selected::after {
-  border-bottom-color: #004f91;
+  border-bottom-color: #027f7f;
 }
 .dashboard .ant-menu a:hover {
   color: #333;

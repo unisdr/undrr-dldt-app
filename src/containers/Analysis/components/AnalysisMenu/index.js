@@ -10,7 +10,7 @@ const AnalysisMenu = () => {
   const addDashboard = () => {
     axios
       .post(
-        `${process.env.REACT_APP_API_URL}/items/dashboards?access_token=${process.env.REACT_APP_ACCESS_TOKEN}`,
+        `${window._env_.REACT_APP_API_URL}/items/dashboards?access_token=${window._env_.REACT_APP_ACCESS_TOKEN}`,
         {
           name: "New dashboard",
           start_date: dayjs("2018-05-01"),
@@ -28,10 +28,11 @@ const AnalysisMenu = () => {
   const getDashboards = () => {
     axios
       .get(
-        `${process.env.REACT_APP_API_URL}/items/dashboards?access_token=${process.env.REACT_APP_ACCESS_TOKEN}`
+        `${window._env_.REACT_APP_API_URL}/items/dashboards?access_token=${window._env_.REACT_APP_ACCESS_TOKEN}`
       )
       .then((res) => {
         const array = [];
+        /*
         array.push(
           {
             key: "Events",
@@ -50,6 +51,7 @@ const AnalysisMenu = () => {
             label: <Link to={`/analysis/records`}>Records</Link>,
           },
         );
+        */
         res.data.data.forEach((item) => {
           array.push({
             key: item.id,

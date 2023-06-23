@@ -1,7 +1,17 @@
 import React, { useState, useEffect } from "react";
 import "./style.css";
 import { Nav } from "../../../../components/Nav";
-import { Button, message, Row, Col, Tag, Tooltip, Select, Table, Tabs } from "antd";
+import {
+  Button,
+  message,
+  Row,
+  Col,
+  Tag,
+  Tooltip,
+  Select,
+  Table,
+  Tabs,
+} from "antd";
 import { Link } from "react-router-dom";
 import moment from "moment";
 import axios from "axios";
@@ -16,11 +26,11 @@ const Records = () => {
   const [events, setEvents] = useState([]);
   const [regions, setRegions] = useState([]);
   const [loading, setLoading] = useState(false);
-  
+
   const statusColor = {
-    draft: '#F4E496',
-    published: '#0A696A',
-  }
+    draft: "#F4E496",
+    published: "#0A696A",
+  };
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -38,9 +48,9 @@ const Records = () => {
 
   const getRecords = () => {
     setLoading(true);
-    let url = `${process.env.REACT_APP_API_URL}/items/records?limit=100&sort[]=-date_created&access_token=${process.env.REACT_APP_ACCESS_TOKEN}`;
+    let url = `${window._env_.REACT_APP_API_URL}/items/records?limit=100&sort[]=-date_created&access_token=${window._env_.REACT_APP_ACCESS_TOKEN}`;
     if (countryId) {
-      url = `${process.env.REACT_APP_API_URL}/items/records?filter[_and][0][country][_eq]=${countryId}&limit=100&access_token=${process.env.REACT_APP_ACCESS_TOKEN}`;
+      url = `${window._env_.REACT_APP_API_URL}/items/records?filter[_and][0][country][_eq]=${countryId}&limit=100&access_token=${window._env_.REACT_APP_ACCESS_TOKEN}`;
     }
     axios
       .get(url)
@@ -58,7 +68,7 @@ const Records = () => {
   const getSectors = () => {
     return axios
       .get(
-        `${process.env.REACT_APP_API_URL}/items/sectors?access_token=${process.env.REACT_APP_ACCESS_TOKEN}`
+        `${window._env_.REACT_APP_API_URL}/items/sectors?access_token=${window._env_.REACT_APP_ACCESS_TOKEN}`
       )
       .then((res) => {
         setSectors(res.data.data);
@@ -72,7 +82,7 @@ const Records = () => {
   const getEvents = () => {
     return axios
       .get(
-        `${process.env.REACT_APP_API_URL}/items/events?limit=1000000&access_token=${process.env.REACT_APP_ACCESS_TOKEN}`
+        `${window._env_.REACT_APP_API_URL}/items/events?limit=1000000&access_token=${window._env_.REACT_APP_ACCESS_TOKEN}`
       )
       .then((res) => {
         setEvents(res.data.data);
@@ -86,7 +96,7 @@ const Records = () => {
   const getRegions = () => {
     return axios
       .get(
-        `${process.env.REACT_APP_API_URL}/items/regions?limit=1000000&access_token=${process.env.REACT_APP_ACCESS_TOKEN}`
+        `${window._env_.REACT_APP_API_URL}/items/regions?limit=1000000&access_token=${window._env_.REACT_APP_ACCESS_TOKEN}`
       )
       .then((res) => {
         setRegions(res.data.data);
@@ -100,7 +110,7 @@ const Records = () => {
   const getCountries = () => {
     return axios
       .get(
-        `${process.env.REACT_APP_API_URL}/items/countries?access_token=${process.env.REACT_APP_ACCESS_TOKEN}`
+        `${window._env_.REACT_APP_API_URL}/items/countries?access_token=${window._env_.REACT_APP_ACCESS_TOKEN}`
       )
       .then((res) => {
         setCountries(res.data.data);
@@ -135,12 +145,7 @@ const Records = () => {
 
   return (
     <>
-     
-        <div className="welcome-msg">
-          <p>Welcome to the Disasterland Disaster Losses and Damage Tracking System.
-          You can create a <Link to="/">new record</Link>, explore data in the <Link to="/">analysis</Link> section, configure your instance <Link to="/">settings</Link>, and <Link to="/">import</Link> or <Link to="/">export</Link> data.</p>
-        </div>
-        <div className="page-controls">
+      <div className="page-controls">
         <Link to="/record/add">
           <Button
             className="add-record"
@@ -163,52 +168,57 @@ const Records = () => {
                       dataIndex: "status",
                       title: "Status",
                       key: "status",
-                      sorter: (a, b) =>
-                        a.status.localeCompare(b.status),
+                      sorter: (a, b) => a.status.localeCompare(b.status),
                       render: (value, record) => {
                         return (
-                        <Tooltip title={ value }>
-                          {} <div 
-                            style={{ background: statusColor[value] }} 
-                            className="status-circle">
-                            { value }
-                          </div>
-                        </Tooltip>
-                        )
-                      }
+                          <Tooltip title={value}>
+                            {}{" "}
+                            <div
+                              style={{ background: statusColor[value] }}
+                              className="status-circle"
+                            >
+                              {value}
+                            </div>
+                          </Tooltip>
+                        );
+                      },
                     },
                     {
                       dataIndex: "region",
                       title: "Region",
                       key: "region",
-                      filters: regions.map((item) => ({ text: item.code, value: item.code })),
+                      filters: regions.map((item) => ({
+                        text: item.code,
+                        value: item.code,
+                      })),
                       onFilter: (value, record) => record.region === value,
                       render: (value, record) => {
-                        return <Tag color="green">{value}</Tag>;
+                        return value;
                       },
                     },
                     {
                       dataIndex: "sector",
                       title: "Sector",
                       key: "sector",
-                      filters: sectors.filter((row) => row.id !== 'AGR').map((item) => ({ text: item.name, value: item.id })),
+                      filters: sectors
+                        .filter((row) => row.id !== "AGR")
+                        .map((item) => ({ text: item.name, value: item.id })),
                       onFilter: (value, record) => record.sector === value,
                       render: (value, record) => {
-                        return (
-                          <Tag color="blue">
-                              {getSectorName(value)}{" "}
-                          </Tag>
-                        );
+                        return getSectorName(value);
                       },
                     },
                     {
                       dataIndex: "event",
                       title: "Event",
                       key: "event",
-                      filters: events.map((item) => ({ text: item.name, value: item.uuid })),
+                      filters: events.map((item) => ({
+                        text: item.name,
+                        value: item.uuid,
+                      })),
                       onFilter: (value, record) => record.event === value,
                       render: (value, record) => {
-                        return <Tag color="orange">{ getEventName(value) }</Tag>;
+                        return getEventName(value);
                       },
                     },
                     {

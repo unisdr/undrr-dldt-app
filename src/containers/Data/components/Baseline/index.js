@@ -24,7 +24,7 @@ const Baseline = () => {
     setLoading(true);
     return axios
       .get(
-        `${process.env.REACT_APP_API_URL}/items/indicators?limit=1000000&access_token=${process.env.REACT_APP_ACCESS_TOKEN}`
+        `${window._env_.REACT_APP_API_URL}/items/indicators?limit=1000000&access_token=${window._env_.REACT_APP_ACCESS_TOKEN}`
       )
       .then((res) => {
         setEvents(res.data.data);

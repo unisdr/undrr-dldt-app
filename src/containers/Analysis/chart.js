@@ -121,7 +121,7 @@ const Chart = (props) => {
   useEffect(() => {
     axios
       .get(
-        `${process.env.REACT_APP_API_URL}/items/sectors?access_token=${process.env.REACT_APP_ACCESS_TOKEN}`
+        `${window._env_.REACT_APP_API_URL}/items/sectors?access_token=${window._env_.REACT_APP_ACCESS_TOKEN}`
       )
       .then((res) => {
         const obj = {};
@@ -138,7 +138,7 @@ const Chart = (props) => {
   useEffect(() => {
     axios
       .get(
-        `${process.env.REACT_APP_API_URL}/items/hazards?access_token=${process.env.REACT_APP_ACCESS_TOKEN}`
+        `${window._env_.REACT_APP_API_URL}/items/hazards?access_token=${window._env_.REACT_APP_ACCESS_TOKEN}`
       )
       .then((res) => {
         const obj = {};
@@ -175,7 +175,7 @@ const Chart = (props) => {
 
     axios
       .get(
-        `${process.env.REACT_APP_API_URL}/items/effects?filter[date][_between]=[${startDate},${endDate}]${query}&limit=-1&access_token=${process.env.REACT_APP_ACCESS_TOKEN}`
+        `${window._env_.REACT_APP_API_URL}/items/effects?filter[date][_between]=[${startDate},${endDate}]${query}&limit=-1&access_token=${window._env_.REACT_APP_ACCESS_TOKEN}`
       )
       .then((res) => {
         const array = [];
@@ -334,7 +334,7 @@ const Chart = (props) => {
             onClick={() => {
               axios
                 .delete(
-                  `${process.env.REACT_APP_API_URL}/items/charts/${chart.id}?access_token=${process.env.REACT_APP_ACCESS_TOKEN}`
+                  `${window._env_.REACT_APP_API_URL}/items/charts/${chart.id}?access_token=${window._env_.REACT_APP_ACCESS_TOKEN}`
                 )
                 .then(() => {
                   message.success("Chart deleted");
@@ -354,7 +354,7 @@ const Chart = (props) => {
                     onChange={(e) => {
                       setTitle(e.target.value);
                       axios.patch(
-                        `${process.env.REACT_APP_API_URL}/items/charts/${chart.id}?access_token=${process.env.REACT_APP_ACCESS_TOKEN}`,
+                        `${window._env_.REACT_APP_API_URL}/items/charts/${chart.id}?access_token=${window._env_.REACT_APP_ACCESS_TOKEN}`,
                         {
                           id: chart.id,
                           title: e.target.value,
@@ -371,7 +371,7 @@ const Chart = (props) => {
                     onChange={(value) => {
                       setInterval(value);
                       axios.patch(
-                        `${process.env.REACT_APP_API_URL}/items/charts/${chart.id}?access_token=${process.env.REACT_APP_ACCESS_TOKEN}`,
+                        `${window._env_.REACT_APP_API_URL}/items/charts/${chart.id}?access_token=${window._env_.REACT_APP_ACCESS_TOKEN}`,
                         {
                           id: chart.id,
                           interval: value,
@@ -393,7 +393,7 @@ const Chart = (props) => {
                     onChange={(value) => {
                       setMark(value);
                       axios.patch(
-                        `${process.env.REACT_APP_API_URL}/items/charts/${chart.id}?access_token=${process.env.REACT_APP_ACCESS_TOKEN}`,
+                        `${window._env_.REACT_APP_API_URL}/items/charts/${chart.id}?access_token=${window._env_.REACT_APP_ACCESS_TOKEN}`,
                         {
                           id: chart.id,
                           mark: value,
@@ -414,7 +414,7 @@ const Chart = (props) => {
                     onChange={(value) => {
                       setCols(value);
                       axios.patch(
-                        `${process.env.REACT_APP_API_URL}/items/charts/${chart.id}?access_token=${process.env.REACT_APP_ACCESS_TOKEN}`,
+                        `${window._env_.REACT_APP_API_URL}/items/charts/${chart.id}?access_token=${window._env_.REACT_APP_ACCESS_TOKEN}`,
                         {
                           id: chart.id,
                           cols: value,
@@ -440,7 +440,7 @@ const Chart = (props) => {
                         setY("");
                       }
                       axios.patch(
-                        `${process.env.REACT_APP_API_URL}/items/charts/${chart.id}?access_token=${process.env.REACT_APP_ACCESS_TOKEN}`,
+                        `${window._env_.REACT_APP_API_URL}/items/charts/${chart.id}?access_token=${window._env_.REACT_APP_ACCESS_TOKEN}`,
                         {
                           id: chart.id,
                           y: value || null,
@@ -459,7 +459,7 @@ const Chart = (props) => {
                     onChange={(value) => {
                       setIndicator(value);
                       axios.patch(
-                        `${process.env.REACT_APP_API_URL}/items/charts/${chart.id}?access_token=${process.env.REACT_APP_ACCESS_TOKEN}`,
+                        `${window._env_.REACT_APP_API_URL}/items/charts/${chart.id}?access_token=${window._env_.REACT_APP_ACCESS_TOKEN}`,
                         {
                           id: chart.id,
                           indicator: value,
@@ -490,7 +490,7 @@ const Chart = (props) => {
                       }
                       setExclude(value);
                       axios.patch(
-                        `${process.env.REACT_APP_API_URL}/items/charts/${chart.id}?access_token=${process.env.REACT_APP_ACCESS_TOKEN}`,
+                        `${window._env_.REACT_APP_API_URL}/items/charts/${chart.id}?access_token=${window._env_.REACT_APP_ACCESS_TOKEN}`,
                         {
                           id: chart.id,
                           hde: value?.length ? "DEA" : null,
@@ -517,7 +517,7 @@ const Chart = (props) => {
                         setGroup("");
                       }
                       axios.patch(
-                        `${process.env.REACT_APP_API_URL}/items/charts/${chart.id}?access_token=${process.env.REACT_APP_ACCESS_TOKEN}`,
+                        `${window._env_.REACT_APP_API_URL}/items/charts/${chart.id}?access_token=${window._env_.REACT_APP_ACCESS_TOKEN}`,
                         {
                           id: chart.id,
                           group: value || "",
@@ -539,7 +539,7 @@ const Chart = (props) => {
                     onChange={(value) => {
                       setColor(value);
                       axios.patch(
-                        `${process.env.REACT_APP_API_URL}/items/charts/${chart.id}?access_token=${process.env.REACT_APP_ACCESS_TOKEN}`,
+                        `${window._env_.REACT_APP_API_URL}/items/charts/${chart.id}?access_token=${window._env_.REACT_APP_ACCESS_TOKEN}`,
                         {
                           id: chart.id,
                           color: value || null,
@@ -565,7 +565,7 @@ const Chart = (props) => {
                     }}
                     onAfterChange={(value) => {
                       axios.patch(
-                        `${process.env.REACT_APP_API_URL}/items/charts/${chart.id}?access_token=${process.env.REACT_APP_ACCESS_TOKEN}`,
+                        `${window._env_.REACT_APP_API_URL}/items/charts/${chart.id}?access_token=${window._env_.REACT_APP_ACCESS_TOKEN}`,
                         {
                           id: chart.id,
                           height: value,
@@ -581,7 +581,7 @@ const Chart = (props) => {
                     onChange={(value) => {
                       setMap(value);
                       axios.patch(
-                        `${process.env.REACT_APP_API_URL}/items/charts/${chart.id}?access_token=${process.env.REACT_APP_ACCESS_TOKEN}`,
+                        `${window._env_.REACT_APP_API_URL}/items/charts/${chart.id}?access_token=${window._env_.REACT_APP_ACCESS_TOKEN}`,
                         {
                           id: chart.id,
                           map: value === true ? 1 : 0,

@@ -51,7 +51,7 @@ const Front = () => {
 
   const getRecords = () => {
     setLoading(true);
-    let url = `${window._env_.REACT_APP_API_URL}/items/records?limit=5&sort[]=-date_created&access_token=${window._env_.REACT_APP_ACCESS_TOKEN}`;
+    let url = `${window._env_.REACT_APP_API_URL}/items/records?limit=10&sort[]=-date_created&access_token=${window._env_.REACT_APP_ACCESS_TOKEN}`;
     if (countryId) {
       url = `${window._env_.REACT_APP_API_URL}/items/records?filter[_and][0][country][_eq]=${countryId}&limit=100&access_token=${window._env_.REACT_APP_ACCESS_TOKEN}`;
     }
@@ -173,27 +173,37 @@ const Front = () => {
                 </Button>
               </Link>{" "}
             </div>
-            {/*}
-      <div className="record-filters">
-      <Row gutter={30}>
-        <Col sm={6} xs={24}>
-          <label>Hazard</label>
-          <Select style={{ width: '100%' }} placeholder="Select hazard"></Select>
-        </Col>
-        <Col sm={6} xs={24}>
-          <label>Event</label>
-          <Select style={{ width: '100%' }} placeholder="Select event"></Select>
-        </Col>
-        <Col sm={6} xs={24}>
-          <label>Record created</label>
-          <DatePicker style={{ width: '100%' }} />
-        </Col>
-        </Row>
-        </div>
-    {*/}
+            <div className="record-filters">
+              <Row gutter={30}>
+                <Col sm={6} xs={24}>
+                  <label>Sector</label>
+                  <Select
+                    style={{ width: "100%" }}
+                    placeholder="Select sector"
+                  ></Select>
+                </Col>
+                <Col sm={6} xs={24}>
+                  <label>Hazard</label>
+                  <Select
+                    style={{ width: "100%" }}
+                    placeholder="Select hazard"
+                  ></Select>
+                </Col>
+                <Col sm={6} xs={24}>
+                  <label>Event</label>
+                  <Select
+                    style={{ width: "100%" }}
+                    placeholder="Select event"
+                  ></Select>
+                </Col>
+                <Col sm={6} xs={24}>
+                  <label>Record created</label>
+                  <DatePicker style={{ width: "100%" }} />
+                </Col>
+              </Row>
+            </div>
             <Row gutter={30}>
               <Col xs={24}>
-                <h2>Assigned Records</h2>
                 {sectors?.length > 1 && (
                   <div className="table-wrapper">
                     <Table
@@ -209,7 +219,6 @@ const Front = () => {
                         {
                           dataIndex: "status",
                           title: "Status",
-                          fixed: "left",
                           key: "status",
                           sorter: (a, b) => a.status.localeCompare(b.status),
                           render: (value, record) => {
@@ -283,200 +292,28 @@ const Front = () => {
                           })),
                           onFilter: (value, record) => record.region === value,
                           render: (value, record) => {
-                            return "Region A";
+                            return "Asia & Pacific";
                           },
                         },
                         {
-                          dataIndex: "district",
-                          title: "District",
-                          key: "district",
+                          dataIndex: "country",
+                          title: "Country",
+                          key: "country",
                           filters: regions.map((item) => ({
                             text: item.code,
                             value: item.code,
                           })),
                           onFilter: (value, record) => record.region === value,
                           render: (value, record) => {
-                            return "District A";
+                            return "Thailand";
                           },
                         },
                         {
-                          dataIndex: "date_created",
-                          title: "Created",
-                          key: "date_created",
-                          sorter: (a, b) =>
-                            moment(a.date_created).format("x") -
-                            moment(b.date_created).format("x"),
+                          dataIndex: "origin",
+                          title: "Origin",
+                          key: "origin",
                           render: (value, record) => {
-                            return <>{moment(value).format("DD MMM 'YY")}</>;
-                          },
-                        },
-                        {
-                          dataIndex: "date_updated",
-                          title: "Updated",
-                          key: "date_updated",
-                          defaultSortOrder: "descend",
-                          sorter: (a, b) =>
-                            moment(a.date_updated || a.date_created).format(
-                              "x"
-                            ) -
-                            moment(b.date_updated || b.date_created).format(
-                              "x"
-                            ),
-                          render: (value, record) => {
-                            if (value) {
-                              return <>{moment(value).format("DD MMM 'YY")}</>;
-                            } else {
-                              return (
-                                <>
-                                  {moment(record.date_created).format(
-                                    "DD MMM 'YY"
-                                  )}
-                                </>
-                              );
-                            }
-                          },
-                        },
-                        {
-                          dataIndex: "user_updated",
-                          title: "Updated by",
-                          key: "updated_by",
-                          render: (value, record) => {
-                            console.log(record);
-                            return "Tanguy Thomas";
-                          },
-                        },
-                        {
-                          /*}
-                    {
-                      dataIndex: "effects",
-                      title: "Effects",
-                      key: "effects",
-                      render: (value, record) => {
-                        return record?.effects?.length;
-                      },
-                    },
-                  {*/
-                        },
-                        {
-                          dataIndex: "edit",
-                          title: "",
-                          key: "edit",
-                          fixed: "right",
-                          render: (value, record) => {
-                            return (
-                              <Link to={`/record/${record.uuid}`}>Edit</Link>
-                            );
-                          },
-                        },
-                      ]}
-                      pagination={{
-                        pageSize: 40,
-                      }}
-                      loading={loading}
-                      dataSource={records}
-                    />
-                  </div>
-                )}
-
-                <h2>My Records</h2>
-                {sectors?.length > 1 && (
-                  <div className="table-wrapper">
-                    <Table
-                      columns={[
-                        {
-                          dataIndex: "uuid",
-                          title: "UUID",
-                          key: "uuid",
-                          render: (value, record) => (
-                            <Input style={{ width: "100px" }} value={value} />
-                          ),
-                        },
-                        {
-                          dataIndex: "status",
-                          title: "Status",
-                          fixed: "left",
-                          key: "status",
-                          sorter: (a, b) => a.status.localeCompare(b.status),
-                          render: (value, record) => {
-                            return (
-                              <Tooltip title={value}>
-                                {}{" "}
-                                <div
-                                  style={{ background: statusColor[value] }}
-                                  className="status-circle"
-                                >
-                                  {value}
-                                </div>
-                              </Tooltip>
-                            );
-                          },
-                        },
-
-                        {
-                          /*}
-                    {
-                      dataIndex: "sector",
-                      title: "Sector",
-                      key: "sector",
-                      filters: sectors.filter((row) => row.id !== 'AGR').map((item) => ({ text: item.name, value: item.id })),
-                      onFilter: (value, record) => record.sector === value,
-                      render: (value, record) => {
-                        return (
-                          <Tag color="blue">
-                              {getSectorName(value)}{" "}
-                          </Tag>
-                        );
-                      },
-                    },
-                  {*/
-                        },
-                        {
-                          dataIndex: "event",
-                          title: "Event",
-                          key: "event",
-                          filters: events.map((item) => ({
-                            text: item.name,
-                            value: item.uuid,
-                          })),
-                          onFilter: (value, record) => record.event === value,
-                          render: (value, record) => {
-                            return <b>Tropical Cyclone Erma</b>;
-                          },
-                        },
-                        {
-                          dataIndex: "event",
-                          title: "Event date",
-                          key: "event_date",
-                          render: (value, record) => {
-                            return dayjs()
-                              .subtract(10, "days")
-                              .format("DD MMM 'YY");
-                          },
-                        },
-                        {
-                          dataIndex: "region",
-                          title: "Region",
-                          key: "region",
-                          filters: regions.map((item) => ({
-                            text: item.code,
-                            value: item.code,
-                          })),
-                          onFilter: (value, record) => record.region === value,
-                          render: (value, record) => {
-                            return "Region A";
-                          },
-                        },
-                        {
-                          dataIndex: "district",
-                          title: "District",
-                          key: "district",
-                          filters: regions.map((item) => ({
-                            text: item.code,
-                            value: item.code,
-                          })),
-                          onFilter: (value, record) => record.region === value,
-                          render: (value, record) => {
-                            return "District A";
+                            return "Thailand DLAS";
                           },
                         },
                         {
@@ -541,7 +378,6 @@ const Front = () => {
                           dataIndex: "edit",
                           title: "",
                           key: "edit",
-                          fixed: "right",
                           render: (value, record) => {
                             return (
                               <Link to={`/record/${record.uuid}`}>Edit</Link>

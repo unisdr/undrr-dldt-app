@@ -3,7 +3,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "./App.css";
 
 import { Nav } from "./components/Nav";
-import { Front } from "./containers/Front";
+import { Front } from "./containers/Front-gi";
 import { GlobalFront } from "./containers/GlobalFront/";
 import { Data } from "./containers/Data";
 import { Record } from "./containers/Data/components/Record";
@@ -21,6 +21,13 @@ import { GlobalHeader } from "./components/Header";
 import { GlobalFooter } from "./components/Footer";
 
 function App() {
+  if (!window._env_) {
+    window._env_ = {
+      REACT_APP_API_URL: process.env.REACT_APP_API_URL,
+      REACT_APP_ACCESS_TOKEN: process.env.REACT_APP_ACCESS_TOKEN,
+    };
+  }
+
   const router = createBrowserRouter([
     {
       path: "/",

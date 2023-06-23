@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import axios from "axios";
 import "./style.css";
 import { Link } from "react-router-dom";
 import {
@@ -18,17 +19,29 @@ import logo from "./logo.png";
 import { Menu } from "antd";
 
 const Nav = () => {
+  const [settings, setSettings] = useState([]);
+
+  useEffect(() => {
+    axios
+      .get(
+        `${window._env_.REACT_APP_API_URL}/items/settings?access_token=${window._env_.REACT_APP_ACCESS_TOKEN}`
+      )
+      .then((res) => {
+        setSettings(res.data.data);
+      });
+  }, []);
+
   return (
     <div className="nav">
       <div className="content">
         <Link className="brand" to="/">
           <span className="icon">DLDT</span>
         </Link>
-        <Link to="/data/records" className="instance-flag">
+        <Link to="/" className="instance-flag">
           Flag
         </Link>
-        <Link to="/data/records" className="instance-name">
-          Disasterland
+        <Link to="/" className="instance-name">
+          {settings.app_name || "Disasterland"}
         </Link>
         <Menu
           mode="horizontal"
@@ -45,7 +58,7 @@ const Nav = () => {
             },
             {
               label: (
-                <Link to="/analysis/events">
+                <Link to="/dashboard/55">
                   <EyeOutlined /> Analysis
                 </Link>
               ),

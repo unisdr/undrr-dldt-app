@@ -52,7 +52,7 @@ const DamageInputRow = (props) => {
   const getSectors = () => {
     axios
       .get(
-        `https://pumba-api.onalabs.org/items/sectors?access_token=${process.env.REACT_APP_ACCESS_TOKEN}`
+        `https://pumba-api.onalabs.org/items/sectors?access_token=${window._env_.REACT_APP_ACCESS_TOKEN}`
       )
       .then((res) => {
         setSectors(res.data?.data);
@@ -65,7 +65,7 @@ const DamageInputRow = (props) => {
   const getUnits = () => {
     axios
       .get(
-        `https://pumba-api.onalabs.org/items/units?access_token=${process.env.REACT_APP_ACCESS_TOKEN}`
+        `https://pumba-api.onalabs.org/items/units?access_token=${window._env_.REACT_APP_ACCESS_TOKEN}`
       )
       .then((res) => {
         setUnits(res.data?.data);
@@ -78,7 +78,7 @@ const DamageInputRow = (props) => {
   const getAssets = () => {
     axios
       .get(
-        `https://pumba-api.onalabs.org/items/assets?access_token=${process.env.REACT_APP_ACCESS_TOKEN}`
+        `https://pumba-api.onalabs.org/items/assets?access_token=${window._env_.REACT_APP_ACCESS_TOKEN}`
       )
       .then((res) => {
         console.log(res);
@@ -93,7 +93,7 @@ const DamageInputRow = (props) => {
     if (sectorId) {
       axios
         .get(
-          `https://pumba-api.onalabs.org/items/assets?filter[_and][0][sector][_eq]=${sectorId}&access_token=${process.env.REACT_APP_ACCESS_TOKEN}`
+          `https://pumba-api.onalabs.org/items/assets?filter[_and][0][sector][_eq]=${sectorId}&access_token=${window._env_.REACT_APP_ACCESS_TOKEN}`
         )
         .then((res) => {
           setAssets(res.data?.data);
@@ -107,7 +107,7 @@ const DamageInputRow = (props) => {
   const getDamage = () => {
     axios
       .get(
-        `https://pumba-api.onalabs.org/items/damage?access_token=${process.env.REACT_APP_ACCESS_TOKEN}`
+        `https://pumba-api.onalabs.org/items/damage?access_token=${window._env_.REACT_APP_ACCESS_TOKEN}`
       )
       .then((res) => {
         setDamage(res.data?.data);

@@ -26,7 +26,7 @@ const DisruptionInputRow = (props) => {
   const getSectors = () => {
     axios
       .get(
-        "https://pumba-api.onalabs.org/items/sectors?access_token=${process.env.REACT_APP_ACCESS_TOKEN}"
+        "https://pumba-api.onalabs.org/items/sectors?access_token=${window._env_.REACT_APP_ACCESS_TOKEN}"
       )
       .then((res) => {
         setSectors(res.data?.data);
@@ -39,7 +39,7 @@ const DisruptionInputRow = (props) => {
   const getDisruptions = () => {
     axios
       .get(
-        `https://pumba-api.onalabs.org/items/disruptions?access_token=${process.env.REACT_APP_ACCESS_TOKEN}`
+        `https://pumba-api.onalabs.org/items/disruptions?access_token=${window._env_.REACT_APP_ACCESS_TOKEN}`
       )
       .then((res) => {
         setDisruptions(res.data?.data);
@@ -53,7 +53,7 @@ const DisruptionInputRow = (props) => {
     if (sectorId) {
       axios
         .get(
-          `https://pumba-api.onalabs.org/items/disruptions?filter[_and][0][sector][_eq]=${sectorId}&access_token=${process.env.REACT_APP_ACCESS_TOKEN}`
+          `https://pumba-api.onalabs.org/items/disruptions?filter[_and][0][sector][_eq]=${sectorId}&access_token=${window._env_.REACT_APP_ACCESS_TOKEN}`
         )
         .then((res) => {
           setDisruptions(res.data?.data);

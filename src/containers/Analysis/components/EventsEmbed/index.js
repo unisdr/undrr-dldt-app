@@ -10,6 +10,7 @@ const EventsEmbed = () => {
     <div className="page-embed">
       <div className="iframe-wrapper">
         <div className="content">
+          {/*
           <iframe
             seamless
             scrolling="no"
@@ -18,6 +19,7 @@ const EventsEmbed = () => {
             width="100%"
             height="4000"
           />
+        */}
         </div>
       </div>
     </div>

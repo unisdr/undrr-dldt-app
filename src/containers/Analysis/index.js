@@ -60,7 +60,7 @@ const Analysis = () => {
   const addDashboard = () => {
     axios
       .post(
-        `${process.env.REACT_APP_API_URL}/items/dashboards?access_token=${process.env.REACT_APP_ACCESS_TOKEN}`,
+        `${window._env_.REACT_APP_API_URL}/items/dashboards?access_token=${window._env_.REACT_APP_ACCESS_TOKEN}`,
         {
           name: "New dashboard",
           start_date: dayjs("2018-05-01"),
@@ -78,10 +78,11 @@ const Analysis = () => {
   const getDashboards = () => {
     axios
       .get(
-        `${process.env.REACT_APP_API_URL}/items/dashboards?access_token=${process.env.REACT_APP_ACCESS_TOKEN}`
+        `${window._env_.REACT_APP_API_URL}/items/dashboards?access_token=${window._env_.REACT_APP_ACCESS_TOKEN}`
       )
       .then((res) => {
         const array = [];
+        /*
         array.push(
           {
             key: "Events",
@@ -100,6 +101,7 @@ const Analysis = () => {
             label: <Link to={`/analysis/records`}>Records</Link>,
           },
         );
+        */
         res.data.data.forEach((item) => {
           array.push({
             key: item.id,
@@ -133,9 +135,11 @@ const Analysis = () => {
     setCharts([]);
     axios
       .get(
-        `${process.env.REACT_APP_API_URL}/items/charts?filter[dashboard][_eq]=${
-          params.id || 1
-        }&access_token=${process.env.REACT_APP_ACCESS_TOKEN}`
+        `${
+          window._env_.REACT_APP_API_URL
+        }/items/charts?filter[dashboard][_eq]=${params.id || 1}&access_token=${
+          window._env_.REACT_APP_ACCESS_TOKEN
+        }`
       )
       .then((res) => {
         setCharts(res.data.data.sort((a, b) => a.id - b.id));
@@ -167,7 +171,7 @@ const Analysis = () => {
     if (startDate && endDate) {
       axios
         .get(
-          `${process.env.REACT_APP_API_URL}/items/effects?filter[date][_between]=[${startDate},${endDate}]&aggregate[count]=uuid&access_token=${process.env.REACT_APP_ACCESS_TOKEN}`
+          `${window._env_.REACT_APP_API_URL}/items/effects?filter[date][_between]=[${startDate},${endDate}]&aggregate[count]=uuid&access_token=${window._env_.REACT_APP_ACCESS_TOKEN}`
         )
         .then((res) => {
           setEffectsCount(res.data.data[0].count.uuid);
@@ -182,7 +186,7 @@ const Analysis = () => {
     if (startDate && endDate) {
       axios
         .get(
-          `${process.env.REACT_APP_API_URL}/items/effects?filter[date][_between]=[${startDate},${endDate}]&aggregate[countDistinct]=event&access_token=${process.env.REACT_APP_ACCESS_TOKEN}`
+          `${window._env_.REACT_APP_API_URL}/items/effects?filter[date][_between]=[${startDate},${endDate}]&aggregate[countDistinct]=event&access_token=${window._env_.REACT_APP_ACCESS_TOKEN}`
         )
         .then((res) => {
           setEventsCount(res.data.data[0].countDistinct.event);
@@ -197,7 +201,7 @@ const Analysis = () => {
     if (startDate && endDate) {
       axios
         .get(
-          `${process.env.REACT_APP_API_URL}/items/effects?filter[date][_between]=[${startDate},${endDate}]&aggregate[sum]=total_cost&access_token=${process.env.REACT_APP_ACCESS_TOKEN}`
+          `${window._env_.REACT_APP_API_URL}/items/effects?filter[date][_between]=[${startDate},${endDate}]&aggregate[sum]=total_cost&access_token=${window._env_.REACT_APP_ACCESS_TOKEN}`
         )
         .then((res) => {
           setDamageTotal(res.data.data[0].sum.total_cost);
@@ -212,7 +216,7 @@ const Analysis = () => {
     if (startDate && endDate) {
       axios
         .get(
-          `${process.env.REACT_APP_API_URL}/items/records?filter[date][_between]=[${startDate},${endDate}]&aggregate[count]=uuid&access_token=${process.env.REACT_APP_ACCESS_TOKEN}`
+          `${window._env_.REACT_APP_API_URL}/items/records?filter[date][_between]=[${startDate},${endDate}]&aggregate[count]=uuid&access_token=${window._env_.REACT_APP_ACCESS_TOKEN}`
         )
         .then((res) => {
           setRecordsCount(res.data.data[0].count.uuid);
@@ -227,7 +231,7 @@ const Analysis = () => {
     if (startDate && endDate) {
       axios
         .get(
-          `${process.env.REACT_APP_API_URL}/items/effects?filter[date][_between]=[${startDate},${endDate}]&aggregate[sum]=total_loss&access_token=${process.env.REACT_APP_ACCESS_TOKEN}`
+          `${window._env_.REACT_APP_API_URL}/items/effects?filter[date][_between]=[${startDate},${endDate}]&aggregate[sum]=total_loss&access_token=${window._env_.REACT_APP_ACCESS_TOKEN}`
         )
         .then((res) => {
           setLossTotal(res.data.data[0].sum.total_loss);
@@ -291,7 +295,7 @@ const Analysis = () => {
                             onBlur={(e) => {
                               axios
                                 .patch(
-                                  `${process.env.REACT_APP_API_URL}/items/dashboards/${params.id}?access_token=${process.env.REACT_APP_ACCESS_TOKEN}`,
+                                  `${window._env_.REACT_APP_API_URL}/items/dashboards/${params.id}?access_token=${window._env_.REACT_APP_ACCESS_TOKEN}`,
                                   {
                                     id: dashboard.id,
                                     name: e.target.value,
@@ -311,7 +315,7 @@ const Analysis = () => {
                     onClick={() => {
                       axios
                         .delete(
-                          `${process.env.REACT_APP_API_URL}/items/dashboards/${params.id}?access_token=${process.env.REACT_APP_ACCESS_TOKEN}`
+                          `${window._env_.REACT_APP_API_URL}/items/dashboards/${params.id}?access_token=${window._env_.REACT_APP_ACCESS_TOKEN}`
                         )
                         .then(() => {
                           message.success("Dashboard delete");
@@ -396,7 +400,7 @@ const Analysis = () => {
               onClick={() => {
                 axios
                   .post(
-                    `${process.env.REACT_APP_API_URL}/items/charts?access_token=${process.env.REACT_APP_ACCESS_TOKEN}`,
+                    `${window._env_.REACT_APP_API_URL}/items/charts?access_token=${window._env_.REACT_APP_ACCESS_TOKEN}`,
                     {
                       cols: 24,
                       height: 140,

@@ -31,7 +31,7 @@ const MediaInput = (props) => {
   const getMedia = (id) => {
     return axios
       .get(
-        `https://pumba-api.onalabs.org/items/media/${id}?access_token=${process.env.REACT_APP_ACCESS_TOKEN}`
+        `https://pumba-api.onalabs.org/items/media/${id}?access_token=${window._env_.REACT_APP_ACCESS_TOKEN}`
       )
       .then((res) => {
         setImageId(res.data.data.file);
@@ -69,7 +69,7 @@ const MediaInput = (props) => {
     // You can use any AJAX library you like
     axios
       .post(
-        `https://pumba-api.onalabs.org/files?access_token=${process.env.REACT_APP_ACCESS_TOKEN}`,
+        `https://pumba-api.onalabs.org/files?access_token=${window._env_.REACT_APP_ACCESS_TOKEN}`,
         formData,
         {
           headers: { "Content-Type": "multipart/form-data" },
@@ -97,7 +97,7 @@ const MediaInput = (props) => {
   const createMedia = (id) => {
     return axios
       .post(
-        `https://pumba-api.onalabs.org/items/media?access_token=${process.env.REACT_APP_ACCESS_TOKEN}`,
+        `https://pumba-api.onalabs.org/items/media?access_token=${window._env_.REACT_APP_ACCESS_TOKEN}`,
         {
           status: "published",
           file: id,

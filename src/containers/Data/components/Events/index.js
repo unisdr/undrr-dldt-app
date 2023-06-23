@@ -23,7 +23,7 @@ const Events = () => {
   const getSectors = () => {
     return axios
       .get(
-        `${process.env.REACT_APP_API_URL}/items/sectors?access_token=${process.env.REACT_APP_ACCESS_TOKEN}`
+        `${window._env_.REACT_APP_API_URL}/items/sectors?access_token=${window._env_.REACT_APP_ACCESS_TOKEN}`
       )
       .then((res) => {
         setSectors(res.data.data);
@@ -38,7 +38,7 @@ const Events = () => {
     setLoading(true);
     return axios
       .get(
-        `${process.env.REACT_APP_API_URL}/items/events?limit=1000000&access_token=${process.env.REACT_APP_ACCESS_TOKEN}`
+        `${window._env_.REACT_APP_API_URL}/items/events?limit=1000000&access_token=${window._env_.REACT_APP_ACCESS_TOKEN}`
       )
       .then((res) => {
         setEvents(res.data.data);
@@ -53,7 +53,7 @@ const Events = () => {
   const getCountries = () => {
     return axios
       .get(
-        `${process.env.REACT_APP_API_URL}/items/countries?access_token=${process.env.REACT_APP_ACCESS_TOKEN}`
+        `${window._env_.REACT_APP_API_URL}/items/countries?access_token=${window._env_.REACT_APP_ACCESS_TOKEN}`
       )
       .then((res) => {
         setCountries(res.data.data);

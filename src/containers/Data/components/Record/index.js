@@ -88,7 +88,7 @@ const Record = () => {
         const mediaIds = [];
         row.media?.forEach((attachment) => mediaIds.push({ file: attachment }));
         array.push({
-          id: row.id,
+          uuid: row.uuid,
           country: row.country,
           region: row.region,
           district: row.district,
@@ -114,15 +114,18 @@ const Record = () => {
           longitude: row.longitude,
           latitude: row.latitude,
           date: row.date,
+          created: row.date_created,
           media: mediaIds,
         });
       });
-      const sort = array.sort((a, b) => a.id - b.id);
+      const sort = array.sort(
+        (a, b) => dayjs(a.created).format("x") - dayjs(b.created).format("x")
+      );
       const damages = sort.filter((a) => a.type === "damage");
       const losses = sort.filter((a) => a.type === "loss");
       const disruptions = sort.filter((a) => a.type === "disruption");
       const humanEffects = sort.filter((a) => a.type === "human_effect");
-     
+
       /*
       const orderdHumanEffects = [];
       humanEffects.forEach((item) => {
@@ -162,7 +165,7 @@ const Record = () => {
     if (id) {
       axios
         .get(
-          `${process.env.REACT_APP_API_URL}/items/records/${id}?access_token=${process.env.REACT_APP_ACCESS_TOKEN}`
+          `${window._env_.REACT_APP_API_URL}/items/records/${id}?access_token=${window._env_.REACT_APP_ACCESS_TOKEN}`
         )
         .then((res) => {
           setRecord(res.data?.data);
@@ -177,7 +180,7 @@ const Record = () => {
   const getEffect = (id) => {
     return axios
       .get(
-        `${process.env.REACT_APP_API_URL}/items/effects/${id}?access_token=${process.env.REACT_APP_ACCESS_TOKEN}`
+        `${window._env_.REACT_APP_API_URL}/items/effects/${id}?access_token=${window._env_.REACT_APP_ACCESS_TOKEN}`
       )
       .catch((err) => {
         console.log(err);
@@ -187,7 +190,7 @@ const Record = () => {
   const getCountries = () => {
     axios
       .get(
-        `${process.env.REACT_APP_API_URL}/items/countries?access_token=${process.env.REACT_APP_ACCESS_TOKEN}`
+        `${window._env_.REACT_APP_API_URL}/items/countries?access_token=${window._env_.REACT_APP_ACCESS_TOKEN}`
       )
       .then((res) => {
         setCountries(res.data?.data);
@@ -201,7 +204,7 @@ const Record = () => {
     if (countryId) {
       axios
         .get(
-          `${process.env.REACT_APP_API_URL}/items/events?filter[_and][0][country][_eq]=${countryId}&access_token=${process.env.REACT_APP_ACCESS_TOKEN}`
+          `${window._env_.REACT_APP_API_URL}/items/events?filter[_and][0][country][_eq]=${countryId}&access_token=${window._env_.REACT_APP_ACCESS_TOKEN}`
         )
         .then((res) => {
           setEvents(res.data?.data);
@@ -215,7 +218,7 @@ const Record = () => {
   const getCauses = () => {
     axios
       .get(
-        `${process.env.REACT_APP_API_URL}/items/hazards?access_token=${process.env.REACT_APP_ACCESS_TOKEN}`
+        `${window._env_.REACT_APP_API_URL}/items/hazards?access_token=${window._env_.REACT_APP_ACCESS_TOKEN}`
       )
       .then((res) => {
         console.log(res);
@@ -230,7 +233,7 @@ const Record = () => {
     if (countryId) {
       axios
         .get(
-          `${process.env.REACT_APP_API_URL}/items/regions?filter[_and][0][country][_eq]=${countryId}&access_token=${process.env.REACT_APP_ACCESS_TOKEN}`
+          `${window._env_.REACT_APP_API_URL}/items/regions?filter[_and][0][country][_eq]=${countryId}&access_token=${window._env_.REACT_APP_ACCESS_TOKEN}`
         )
         .then((res) => {
           const obj = {};
@@ -272,7 +275,7 @@ const Record = () => {
     if (countryId) {
       axios
         .get(
-          `${process.env.REACT_APP_API_URL}/items/sectors?access_token=${process.env.REACT_APP_ACCESS_TOKEN}`
+          `${window._env_.REACT_APP_API_URL}/items/sectors?access_token=${window._env_.REACT_APP_ACCESS_TOKEN}`
         )
         .then((res) => {
           const array = [];
@@ -307,7 +310,7 @@ const Record = () => {
     setLoading(true);
     axios
       .get(
-        `${process.env.REACT_APP_API_URL}/fields/records?access_token=${process.env.REACT_APP_ACCESS_TOKEN}`
+        `${window._env_.REACT_APP_API_URL}/fields/records?access_token=${window._env_.REACT_APP_ACCESS_TOKEN}`
       )
       .then((res) => {
         const items = res.data?.data;
@@ -325,7 +328,7 @@ const Record = () => {
     if (!record.uuid) {
       axios
         .post(
-          `${process.env.REACT_APP_API_URL}/items/records?access_token=${process.env.REACT_APP_ACCESS_TOKEN}`,
+          `${window._env_.REACT_APP_API_URL}/items/records?access_token=${window._env_.REACT_APP_ACCESS_TOKEN}`,
           data
         )
         .then((res) => {
@@ -341,7 +344,7 @@ const Record = () => {
     } else {
       axios
         .patch(
-          `${process.env.REACT_APP_API_URL}/items/records/${data.uuid}?access_token=${process.env.REACT_APP_ACCESS_TOKEN}`,
+          `${window._env_.REACT_APP_API_URL}/items/records/${data.uuid}?access_token=${window._env_.REACT_APP_ACCESS_TOKEN}`,
           data
         )
         .then((res) => {
@@ -361,7 +364,7 @@ const Record = () => {
     if (!data.uuid) {
       return axios
         .post(
-          `${process.env.REACT_APP_API_URL}/items/effects?access_token=${process.env.REACT_APP_ACCESS_TOKEN}`,
+          `${window._env_.REACT_APP_API_URL}/items/effects?access_token=${window._env_.REACT_APP_ACCESS_TOKEN}`,
           data
         )
         .catch((err) => {
@@ -372,7 +375,7 @@ const Record = () => {
       // console.log(`update effect ${data.uuid} row...`);
       return axios
         .patch(
-          `${process.env.REACT_APP_API_URL}/items/effects/${data.id}?access_token=${process.env.REACT_APP_ACCESS_TOKEN}`,
+          `${window._env_.REACT_APP_API_URL}/items/effects/${data.uuid}?access_token=${window._env_.REACT_APP_ACCESS_TOKEN}`,
           data
         )
         .catch((err) => {
@@ -485,7 +488,7 @@ const Record = () => {
             onFinish={(values) => {
               // submit effects and build array of ids
               setLoading(true);
-              console.log(values)
+              console.log(values);
               const promises = [];
               if (values.assets?.length > 0) {
                 values?.assets.forEach((item) => {

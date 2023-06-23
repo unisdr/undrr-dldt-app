@@ -26,7 +26,7 @@ const LossInputRow = (props) => {
   const getSectors = () => {
     axios
       .get(
-        "https://pumba-api.onalabs.org/items/sectors?access_token=${process.env.REACT_APP_ACCESS_TOKEN}"
+        "https://pumba-api.onalabs.org/items/sectors?access_token=${window._env_.REACT_APP_ACCESS_TOKEN}"
       )
       .then((res) => {
         setSectors(res.data?.data);
@@ -39,7 +39,7 @@ const LossInputRow = (props) => {
   const getLosses = () => {
     axios
       .get(
-        `https://pumba-api.onalabs.org/items/losses?access_token=${process.env.REACT_APP_ACCESS_TOKEN}`
+        `https://pumba-api.onalabs.org/items/losses?access_token=${window._env_.REACT_APP_ACCESS_TOKEN}`
       )
       .then((res) => {
         setLosses(res.data?.data);
@@ -53,7 +53,7 @@ const LossInputRow = (props) => {
     if (sectorId) {
       axios
         .get(
-          `https://pumba-api.onalabs.org/items/losses?filter[_and][0][sector][_eq]=${sectorId}&access_token=${process.env.REACT_APP_ACCESS_TOKEN}`
+          `https://pumba-api.onalabs.org/items/losses?filter[_and][0][sector][_eq]=${sectorId}&access_token=${window._env_.REACT_APP_ACCESS_TOKEN}`
         )
         .then((res) => {
           setLosses(res.data?.data);

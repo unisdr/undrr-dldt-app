@@ -2,7 +2,7 @@
 
 **Disclaimer: This prototype app was built over the first half of 2023 in collaboration with UNDRR (United Nations Office for Disaster Risk Reduction). It is important to note that this is not production code and should not be used as such.**
 
-This repository contains a prototype app built using DLDT React, Docker, Express, and Directus. The app aims to showcase the DLDT (Disaster Losses and Damage Tracking) data model and provide a basic user interface for interacting with the data.
+This repository contains a prototype app built using React and Directus. The app aims to showcase the DLDT (Disaster Losses and Damage Tracking) data model and provide a basic user interface for interacting with the data.
 
 ## Contents
 

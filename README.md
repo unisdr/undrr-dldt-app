@@ -4,24 +4,25 @@
 
 This repository contains a prototype app built using React and Directus. The app aims to showcase the DLDT (Disaster Losses and Damage Tracking) data model and provide a basic user interface for interacting with the data.
 
+
+To run the prototype locally, you will need Node, NPM and Docker installed.
+
 ## Contents
 
 - `src/`: DLDT React app source code.
-- `Dockerfile`: Dockerfile for building a Docker image of the DLDT React app, which is served by Express with a configuration route for providing runtime credentials.
-- `api/`: Contains the Dockerfile for building the Directus instance, based on a sample environment file and a dldt-seed.sql file that provides a PostgreSQL database for the Directus instance, seeded with DLDT data model.
+- `docker-compose.yml`: Docker compose file for building Directus and PostgreSQL containers and seeding the database.
+- `api/`: Contains a db.sql file that provides a PostgreSQL database for the Directus instance, seeded with DLDT data model. Used by the docker-compose.yml.
 
 ## Getting Started
 
 To get started with the prototype app, follow the steps below:
 
 1. Clone this repository.
-2. Install the required dependencies by running `npm install`.
-3. Raname `sample-env` to `.env.development` and add your access token.
-4. Create a PostgreSQL database and import `api/dldt-seed.sql`.
-4. Rename the `api/sample-env` to `.env` and add your database credentials.
-3. Build the Docker image for the Directus instance by running `docker build -t directus-api ./api`.
-4. Launch the Docker image `docker run -p 8055:8055 dldt-api`.
-3. Run the app with `npm start`.
+2. Run `docker-compose up -d` to start Directus and seed the database. Directus should be running on http://localhost:8055.
+3. Raname `sample-env` to `.env.development` and add your access token. (If you don't have an access token, you can create an Admin user in Directus and generate a new token).
+4. Install the required dependencies for the frontend by running `npm install`.
+5. Run the app with `npm start`. The DLDT app should be running on http://localhost:3000.
+6. To stop the Docker containers, run `docker-compose down`.
 
 Please note that this is a prototype and may contain bugs or incomplete features. It is not intended for production use.
 

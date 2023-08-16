@@ -21,7 +21,7 @@ To get started with the prototype app, follow the steps below:
 
 1. Clone this repository.
 2. Run `docker-compose up -d` to start Directus and seed the database. Directus should be running on http://localhost:8055.
-3. Raname `sample-env` to `.env.development` and add your access token. (If you don't have an access token, you can create an Admin user in Directus and generate a new token).
+3. Raname `sample-env` to `.env`. (If you don't have an access token, you can create an Admin user in Directus and generate a new token).
 4. Install the required dependencies for the frontend by running `npm install`.
 5. Run the app with `npm start`. The DLDT app should be running on http://localhost:3000.
 6. To stop the Docker containers, run `docker-compose down`.

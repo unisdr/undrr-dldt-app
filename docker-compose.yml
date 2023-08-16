@@ -15,8 +15,8 @@ services:
       DB_DATABASE: directus
       DB_USER: dldtuser
       DB_PASSWORD: indkWxPCcn0ZR3wpuGwg
-      KEY: "8e7FhBjPm2TnZq4s7v9y$BcEfGhJkMnQ8e7FhBjPm2TnZq4s7v9y$BcEfGhJkMnQ"  # Replace with a long random string
-      SECRET: "X9F7nD2Rm8PqZuE5hW6JcA4KvL3TgB1yX9F7nD2Rm8PqZuE5hW6JcA4KvL3TgB1y"  # Replace with a long random string
+      KEY: "8e7FhBjPm2TnZq4s7v9y$BcEfGhJkMnQ8e7FhBjPm2TnZq4s7v9y$BcEfGhJkMnQ"
+      SECRET: "X9F7nD2Rm8PqZuE5hW6JcA4KvL3TgB1yX9F7nD2Rm8PqZuE5hW6JcA4KvL3TgB1y"
       CORS_ORIGIN: "http://localhost:3000"
       CORS_ENABLED: true
 

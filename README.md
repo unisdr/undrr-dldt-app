@@ -5,7 +5,9 @@
 This repository contains a prototype app built using React and Directus. The app aims to showcase the DLDT (Disaster Losses and Damage Tracking) data model and provide a basic user interface for interacting with the data.
 
 
-To run the prototype locally, you will need Node, NPM and Docker installed.
+## Requirements
+
+To run the prototype locally, you will need **Node**, **NPM** and **Docker** installed.
 
 ## Contents
 
